@@ -5,8 +5,9 @@
 		}
 		include $file_path."/php/dbh.php";
 	}
-	$sql = "SELECT ".$column_name." FROM ".$table_name." WHERE (".$where_column.") = ('".$where_value."');";
-	$raw_result = mysqli_query($conn, $sql) or die (mysqli_error($conn));
+	$stmt = $conn->prepare("SELECT ? FROM ? WHERE (?) = ('?');";
+	$stmt = $conn->bind_param("ssss", $table_name, $column_name, $where_column, $where_value);
+	$raw_result = $stmt->execute();
 	if ($raw_result->num_rows > 0) {
 		$row = $raw_result->fetch_assoc();
 		$result = $row[$column_name];
