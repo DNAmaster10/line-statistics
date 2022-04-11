@@ -8,7 +8,7 @@
         header ("location: /pages/login/login.php");
     }
     $username = $conn->real_escape_string($_SESSION["username"]);
-    $password = $conn->real_escape_String{$_SESSION["password"]);
+    $password = $conn->real_escape_String($_SESSION["password"]);
     $table_name = "users";
     $column_name = "password";
     $where_column = "username";
