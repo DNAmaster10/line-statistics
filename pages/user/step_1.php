@@ -15,7 +15,11 @@
     <p>This page can be used to upload newest rider counts. For more information on how to upload data, click here</p>
     <form action="./step_2.php" method="POST">
         <p>Line: </p><input id="line_name_entry" type="text" name="line_name" placeholder="e.g: Zephyr">
-        <input type="submit" value="next">
+        <p>Enter either the counter ID (found on a sign within the counter) OR enter names of the two stations the counter sits between below</p><br>
+        <p>Counter ID: <input type="text" id="counter_id_entry_box"
+        <input type="text" id="station1_entry" name="station1" placeholder="e.g: ZN1">
+        <input type="text" id="station2_entry" name="station2" placeholder="e.g: ZN2">
+        <input type="submit" value="Next">
     </form>
     <p><?php if (isset($error_message)) {echo $error_message;} ?></p>
 </html>
