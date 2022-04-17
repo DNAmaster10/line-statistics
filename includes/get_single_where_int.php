@@ -5,7 +5,7 @@
 		}
 		include $file_path."/php/dbh.php";
 	}
-	$stmt = $conn->prepare("SELECT ? FROM ? WHERE (?) = ('?');";
+	$stmt = $conn->prepare("SELECT ? FROM ? WHERE (?) = ('?');");
 	$stmt = $conn->bind_param("sssi", $table_name, $column_name, $where_column, $where_value);
 	$raw_result = $stmt->execute();
 	if ($raw_result->num_rows > 0) {

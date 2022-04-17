@@ -14,8 +14,18 @@
             header ("location: ./upload_data.php");
         }
         else {
-
-
+            $unix_time = time();
+            $rider_count = $conn->real_escape_string($_POST["rider_ammount"]);
+            if (is_numeric($rider_count)) {
+                $rider_count = intval($rider_count);
+                $stmt = $conn->prepare("INSERT INTO riderData (CounterId,RiderCount,UnixTime,Uploader) VALUES (?,?,?,?);");
+                $stmt = $conn->bind_param("iiis", $counter_id, $rider_count,  $where_column, $where_value);
+                $raw_result = $stmt->execute();
+            }
+            else {
+                $_SESSION["step_1_error_message"] = "Please enter a valid rider count";
+                header ("location: ./upload_data.php");
+            }
         }
     }
     else if ($selection == "code") {
